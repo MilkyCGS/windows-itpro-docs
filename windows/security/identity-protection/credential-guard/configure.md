@@ -124,10 +124,13 @@ You can use PowerShell to determine whether Credential Guard is running on a dev
 (Get-CimInstance -ClassName Win32_DeviceGuard -Namespace root\Microsoft\Windows\DeviceGuard).SecurityServicesRunning
 ```
 
-The command generates the following output:  
+The command outputs an array of numbers from 0-4, depending on the current configuration.  If the array contains a value of 1, Credential Guard is enabled.  If a value of 1 is not included, Credential Guard is disabled:  
 
-- **0**: Credential Guard is disabled (not running)
-- **1**: Credential Guard is enabled (running)
+- **0**:	No services running.
+- **1**:	If present, Credential Guard is running.
+- **2**:	If present, memory integrity is running.
+- **3**:	If present, System Guard Secure Launch is running.
+- **4**:	If present, SMM Firmware Measurement is running.
 
 #### Event viewer
 
